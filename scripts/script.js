@@ -1,47 +1,40 @@
 "use strict";
 
+// global function to find the index of a value
+function findWithAttr(array, attr, value) {
+    for(let i = 0; i < array.length; i++) {
+        if(array[i][attr] === value) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+// contains contacts array and methods
 class  AddressBook {
     constructor() {
-        this.contacts = [
-            {
-               Name: "Erica",
-               Phone: "225-328-8430", 
-               Email: "ericana@hmail",
-            },
-            {
-                Name: "Wow",
-                Phone: "225-328-8430", 
-                Email: "ericana@hmail",
-             },
-             {
-                Name: "Doogy",
-                Phone: "225-328-8430", 
-                Email: "ericana@hmail",
-             },
-             {
-                Name: "Holla",
-                Phone: "225-328-8430", 
-                Email: "ericana@hmail",
-             },
-        ];
+        this.contacts = [];
     }
     add(info) {
         this.contacts.push(info);
-        // console.log(this.contacts);
 
     }
     deleteAt(index) {
         this.contacts.splice(index, 1);
-        // console.log(this.contacts);
     }
     deleteByName(name) {
-
+        let indexOfName = findWithAttr(this.contacts, "Name", name);
+        this.contacts.splice(indexOfName, 1);
     }
     print() {
-        console.log(this.contacts);
+        for (let i = 0; i < this.contacts.length; i++) {
+            console.log(this.contacts[i]);
+        }
     }
 }
 
+
+// build objects for array
 class Contact {
     constructor(name, email, phone, relation) {
         this.name = name;
@@ -63,16 +56,30 @@ while(true) {
         
         addressBook.add(new Contact(name, email, phone, relation));
 
-    } if (action === "delete") {
-        let toDelete = prompt("Index to delete?");
-        addressBook.deleteAt(toDelete);
-    } if (action === "print") {
+    } else if (action === "delete") {
+        let deleteBy = prompt("Delete by index or name?")
+
+        if (deleteBy === "index") {
+            let toDeleteIndex = prompt("Index to delete?");
+            addressBook.deleteAt(toDeleteIndex);
+        } else if (deleteBy === "name") {
+            let toDeleteName = prompt("Name to delete?");
+            addressBook.deleteByName(toDeleteName);
+        } else {
+            console.log("You didn't select either.")
+        }
+
+    } else if (action === "print") {
         addressBook.print();
-    } if (action === "quit") {
-        console.log("Goodbye!")
+
+    } else if (action === "quit") {
+        console.log("Goodbye!");
         break;
+
     } else {
-        console.log("error.")
-        break;
+        prompt("You didn't choose correctly. Try again.");
     }
 }
+
+
+
