@@ -1,15 +1,5 @@
 "use strict";
 
-// global function to find the index of a value
-function findWithAttr(array, attr, value) {
-    for(let i = 0; i < array.length; i++) {
-        if(array[i][attr] === value) {
-            return i;
-        }
-    }
-    return -1;
-}
-
 // contains contacts array and methods
 class  AddressBook {
     constructor() {
@@ -17,12 +7,18 @@ class  AddressBook {
     }
     add(info) {
         this.contacts.push(info);
-
     }
     deleteAt(index) {
         this.contacts.splice(index, 1);
     }
     deleteByName(name) {
+        function findWithAttr(array, attr, value) {
+            for(let i = 0; i < array.length; i++) {
+                if(array[i][attr] === value) {
+                    return i;
+                }
+            }
+        }
         let indexOfName = findWithAttr(this.contacts, "Name", name);
         this.contacts.splice(indexOfName, 1);
     }
@@ -44,10 +40,11 @@ class Contact {
     }
 }
 
-let addressBook = new AddressBook();
+const addressBook = new AddressBook();
 
 while(true) {
     let action = prompt("Add, delete, print, quit?")
+
     if (action === "add") {
         let name = prompt("Name?");
         let email = prompt("Email?");
@@ -77,7 +74,7 @@ while(true) {
         break;
 
     } else {
-        prompt("You didn't choose correctly. Try again.");
+        alert("You didn't choose correctly. Try again.");
     }
 }
 
