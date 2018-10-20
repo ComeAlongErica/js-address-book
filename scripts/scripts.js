@@ -6,16 +6,18 @@ class AddressBook {
         this.contacts = [];
     }
     add(info) {
-        this.contacts.push(info); //pushes object from Contact class to array
+        this.contacts.push(info); 
     }
     deleteAt(index) {
         this.contacts.splice(index, 1);
+        addressBook.display(); // to "refresh" the contact cards
     }
     display() {
         const cardContainer = document.querySelector(".card-container");
         cardContainer.innerHTML = ""; // clears container
         const trashArray= document.getElementsByClassName("img-btn");
 
+        // loop for creating the cards form array
         for (let contact of this.contacts) {
             const createDiv = document.createElement("div");
             createDiv.classList.add("card"); // give div and class of card
@@ -25,8 +27,7 @@ class AddressBook {
             createImg.src = "./images/baseline-delete_forever24px.svg"; // provides image source
 
             // populates card from array
-            createP.textContent = `
-            Name: ${contact.name}
+            createP.innerText = `Name: ${contact.name}
             Email: ${contact.email}
             Phone: ${contact.phone}
             Relationship: ${contact.relation}
@@ -36,21 +37,29 @@ class AddressBook {
             cardContainer.appendChild(createDiv)
                          .appendChild(createP)
                          .appendChild(createImg); // creates div child paragraph and img element
-        }
+            
 
-        // event listener for deleting
-        console.log(trashArray);
-        for (let index of trashArray) {
-            index.addEventListener("click", () => {
-                addressBook.deleteAt(index);
+            // hover effect for trash
+            createImg.addEventListener("mouseenter", () => {
+                createImg.classList.add("trash-hover");
+            });
+            createImg.addEventListener("mouseleave", () => {
+                createImg.classList.remove("trash-hover");
             });
 
         };
         
+        // event listener for deleting
+        for (let index = 0; index < trashArray.length; index++) {
+            trashArray[index].addEventListener("click", () => {
+            addressBook.deleteAt(index);
+                
+            });
+
+        };
 
     }
 }
-
 
 // build objects for array
 class Contact {
