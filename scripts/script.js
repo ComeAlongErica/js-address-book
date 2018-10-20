@@ -1,7 +1,7 @@
 "use strict";
 
 // contains contacts array and methods
-class  AddressBook {
+class AddressBook {
     constructor() {
         this.contacts = [];
     }

@@ -1,0 +1,97 @@
+ *{
+    font-family: 'Maven Pro', sans-serif;    border-radius: 5px;
+    /* border: 1px solid orange; */
+}
+
+body {
+    background-image: url("../images/addressbg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center; 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+    min-width: 350px;
+    height: 63vh;
+    margin: 0 auto;
+    background-color: rgb(179,178,176, 0.6);
+}
+
+h1 {
+    color: white;
+    padding-top: 20px;
+}
+
+form {
+    display: inherit;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 85%;
+    height: 60%;
+}
+
+
+input, select, button {
+    padding: 10px 0;
+    border: none;
+}
+
+input[type=text], select {
+    padding-left: 5px;
+    text-indent: 5px;
+}
+
+button {
+    margin: 20px;
+    width: 85%;
+    background-color: white;
+}
+
+select {
+    height: 35px;
+}
+
+/* card styling here */
+
+.card-container {
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+    width: 300px;
+    margin: 10px;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.8);
+}
+
+img {
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 100px;
+    border: 1px solid black;
+    position: absolute;
+    right: -12px;
+    bottom: -12px;
+    height: 26px;
+    width: 26px;
+}
+
+@media only screen and (min-width: 600px) {
+    
+    .card-container {
+        justify-content: space-around;
+    }
+
+    .card {
+        margin: 20px;
+    }
+    
+}
