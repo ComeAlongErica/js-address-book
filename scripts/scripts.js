@@ -17,6 +17,8 @@ class AddressBook {
         cardContainer.innerHTML = ""; // clears container
         const trashArray= document.getElementsByClassName("img-btn");
 
+        document.getElementById("contact-form").reset(); //clears form after submitting contacts
+
         // loop for creating the cards form array
         for (let contact of this.contacts) {
             const createDiv = document.createElement("div");
