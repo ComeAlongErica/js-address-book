@@ -33,7 +33,7 @@ class AddressBook {
             Email: ${contact.email}
             Phone: ${contact.phone}
             Relationship: ${contact.relation}
-            `;
+            `; 
 
             // add elements
             cardContainer.appendChild(createDiv)
